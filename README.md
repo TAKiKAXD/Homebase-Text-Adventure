@@ -1,5 +1,7 @@
 # Homebase Text Adventure
 
+# VERY MUTCH STILL WORK IN PROGESS 
+
 ## Overview
 Homebase Text Adventure is a text-based adventure game written in Ruby. The player navigates through various rooms, solving puzzles and exploring the environment, using commands or buttons representing available actions.
 
