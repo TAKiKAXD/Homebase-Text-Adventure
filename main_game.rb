@@ -135,6 +135,7 @@ hall_way_1 = Room.new("Hallway", "It's a hallway.")
 hall_way_2 = Room.new("Hallway", "It's a hallway.")
 hall_way_3 = Room.new("Hallway", "It's a hallway.")
 hall_way_4 = Room.new("Hallway", "It's a hallway.")
+hall_way_5 = Room.new("Hallway", "It's a hallway.")
 armory = Room.new("Armory", "A room to upgrade and customize your weapons.")
 storm_shield = Room.new("Storm Shield", "The heart of your defense against the storm.")
 lars_lab = Room.new("Lars's Lab", "A room full of lab equipment, van parts, and a guitar.")
@@ -147,7 +148,9 @@ bot_room = Room.new("The Bot's Room", "This is where Kevin, LoK & Pop spend ther
 major_room = Room.new("Major Oswald's Room", "The room where Oswald manages all the heros of homebase.")
 sur_room = Room.new("The survivors bunk room", "A room with a bunch of beds and bunch of people.")
 hero_room = Room.new("The heros bunk room", "A room with a bunch of beds and bunch of people.")
-riggs_room = Room.New("Director Riggs Room", "The place where all the survivors go")
+riggs_room = Room.new("Director Riggs Room", "The place where all the survivors go.")
+medkit_room = Room.new("MedKit Storage Room", "The place you will find Ned.")
+
 # room items
 command_center.items << "mission briefing"
 armory.items << "sword"
@@ -197,6 +200,11 @@ hall_way_4.exits["south"] = storage_room_2
 storage_room_2.exits["north"] = hall_way_4
 hall_way_4.exits["north"] = riggs_room
 riggs_room.exits["south"] = hall_way_4
+riggs_room.exits["north"] = sur_room
+sur_room.exits["south"] = riggs_room
+sur_room.exits["north"] = medkit_room
+medkit_room.exits["south"] = sur_room
+hall_way_4.exits["west"] = hall_way_5
 
 player = Player.new(command_center)
 
