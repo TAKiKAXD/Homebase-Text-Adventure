@@ -62,7 +62,6 @@ class Quest
       file.write(JSON.pretty_generate(data))
     end
   end
-  
 
   def status
     @completed ? "Completed" : "Not completed"
@@ -81,7 +80,7 @@ class Player
     load_quests_from_file
   end
 
-  def move(direction)
+  def move(direction, game_output)
     if @current_room.exits[direction]
       @current_room = @current_room.exits[direction]
       update_output(game_output, "You move #{direction}.\n" + @current_room.describe)
@@ -90,9 +89,9 @@ class Player
     end
   end
 
-  def take(item_name)
-    item_name = item_name.downcase.strip
-    item = @current_room.items.find { |i| i.downcase == item_name }
+  def take(item_name, game_output)
+    item_name = item_name.strip
+    item = @current_room.items.find { |i| i.downcase.strip == item_name.downcase }
     if item
       @inventory << item
       @current_room.items.delete(item)
@@ -101,9 +100,9 @@ class Player
     else
       update_output(game_output, "There's no #{item_name} here.")
     end
-  end  
-
-  def talk_to(character_name)
+  end
+  
+  def talk_to(character_name, game_output)
     character_name = character_name.capitalize
     if @current_room.characters.key?(character_name)
       dialogue = @current_room.characters[character_name]
@@ -125,7 +124,7 @@ class Player
     end
   end
 
-  def complete_quest(quest_description)
+  def complete_quest(quest_description, game_output)
     if @quests[quest_description]
       update_output(game_output, @quests[quest_description].complete(@inventory, @current_room))
     else
@@ -188,7 +187,7 @@ class Player
     "You are carrying: " + (@inventory.empty? ? "nothing" : @inventory.join(", "))
   end
 end
-  
+
 # Room definitions
 command_center = Room.new("Command Center", "This is where you manage your missions.")
 hall_way_1 = Room.new("Hallway", "It's a hallway.")
@@ -214,66 +213,66 @@ sur_room = Room.new("The survivors bunk room", "A room with a bunch of beds and 
 hero_room = Room.new("The heroes bunk room", "A room with a bunch of beds and a bunch of people.")
 riggs_room = Room.new("Director Riggs Room", "The place where all the survivors go.")
 medkit_room = Room.new("MedKit Storage Room", "The place you will find Ned.")
-train_room = Room.new("Training Room", "")
-weaponstorage_room = Room.new("Weapon Storage Room", "")
-hrle_room = Room.new("The Homebase Realistic Living Environment", "")
-bluglo_storage_room = Room.new("Bluglo Storage Room", "")
-resource_storage_room = Room.new("Resource Storage Room", "")
+train_room = Room.new("Training Room", "A space for honing skills and preparing for battle.")
+weaponstorage_room = Room.new("Weapon Storage Room", "A secure location for storing various weapons and explosive devices.")
+hrle_room = Room.new("The Homebase Realistic Living Environment", "A simulated environment designed to mimic real-world living conditions.")
+bluglo_storage_room = Room.new("Bluglo Storage Room", "A specialized room for storing all things Bluglo.")
+resource_storage_room = Room.new("Resource Storage Room", "A room designated for storing various resource crates and storage bins.")
 
 # Room items
-command_center.items << "mission briefing"
-command_center.items << "communication terminal"
-hall_way_1.items << "map of the base"
-hall_way_2.items << "lost and found bin"
+command_center.items << "Mission Briefing"
+command_center.items << "Communication Device"
+hall_way_1.items << "Map of Homebase"
+hall_way_2.items << "Lost Hat"
 hall_way_3.items << "Sticky note"
-hall_way_4.items << "emergency exit sign"
-hall_way_5.items << "mysterious package"
-hall_way_7.items << "floor cleaning supplies"
-armory.items << "sword"
-armory.items << "shotgun"
-armory.items << "ammo box"
-armory.items << "grenade"
-storm_shield.items << "shield battery"
-storm_shield.items << "storm sensor"
+hall_way_4.items << "Emergency Exit Sign"
+hall_way_5.items << "Mysterious Package"
+hall_way_7.items << "Floor Cleaning Supplies"
+armory.items << "Sword"
+armory.items << "Shotgun"
+armory.items << "Ammo Box"
+armory.items << "Grenade"
+storm_shield.items << "Shield Battery"
+storm_shield.items << "Storm Sensor"
 lars_lab.items << "Bluglo"
-lars_lab.items << "lab equipment"
-lars_lab.items << "van parts"
-lars_lab.items << "guitar"
+lars_lab.items << "Lab Equipment"
+lars_lab.items << "Van Parts"
+lars_lab.items << "Guitar"
 lars_lab.items << "Llama head"
-van_room.items << "van key"
-van_room.items << "spare tire"
-van_room.items << "toolbox"
-van_room.items << "Llama tail"
-storage_room_1.items << "Llama leg"
-storage_room_1.items << "broken llama parts"
+van_room.items << "Van key"
+van_room.items << "Spare Tire"
+van_room.items << "Toolbox"
+van_room.items << "Llama Tail"
+storage_room_1.items << "Llama Leg"
+storage_room_1.items << "Broken Llama Parts"
 storage_room_2.items << "SEE-Bot Head"
-storage_room_2.items << "robot parts"
-storage_room_2.items << "Llama torso"
-storage_room_3.items << "random gadget"
-storage_room_3.items << "old electronics"
-storage_room_3.items << "Llama foot"
-power_room.items << "fuel canister"
-kevin_room.items << "tool kit"
-bot_room.items << "bot maintenance tools"
-bot_room.items << "playful robot parts"
-major_room.items << "hero dossiers"
-major_room.items << "tactical map"
-sur_room.items << "bedroll"
-sur_room.items << "survivor gear"
-hero_room.items << "hero costume rack"
-hero_room.items << "training gear"
-riggs_room.items << "survivor reports"
-riggs_room.items << "emergency supplies"
-medkit_room.items << "medkit"
-medkit_room.items << "first aid supplies"
-train_room.items << "training dummies"
-weaponstorage_room.items << "rifles"
-weaponstorage_room.items << "explosive devices"
-hrle_room.items << "living supplies"
-bluglo_storage_room.items << "bluglo containers"
-bluglo_storage_room.items << "bluglo samples"
-resource_storage_room.items << "resource crates"
-resource_storage_room.items << "storage bins"
+storage_room_2.items << "Robot Parts"
+storage_room_2.items << "Llama Torso"
+storage_room_3.items << "Random Gadget"
+storage_room_3.items << "Old Electronics"
+storage_room_3.items << "Llama Foot"
+power_room.items << "Fuel Canister"
+kevin_room.items << "Tool Kit"
+bot_room.items << "Bot Maintenance Tools"
+bot_room.items << "Rlayful Robot Parts"
+major_room.items << "Hero Dossiers"
+major_room.items << "Tactical Map"
+sur_room.items << "Bedroll"
+sur_room.items << "Survivor Gear"
+hero_room.items << "Hero Costume"
+hero_room.items << "Training Gear"
+riggs_room.items << "Survivor Reports"
+riggs_room.items << "Emergency Supplies"
+medkit_room.items << "Medkit"
+medkit_room.items << "First Fid Supplies"
+train_room.items << "Training Dummies"
+weaponstorage_room.items << "Rifle"
+weaponstorage_room.items << "Explosive Device"
+hrle_room.items << "Living Supplies"
+bluglo_storage_room.items << "Bluglo Containers"
+bluglo_storage_room.items << "Bluglo Samples"
+resource_storage_room.items << "Resource Crates"
+resource_storage_room.items << "Storage Bins"
 
 # Room characters
 command_center.characters["Ray"] = "Ray says: 'Welcome to the Command Center! What can I help you with?'"
@@ -336,7 +335,7 @@ hall_way_3.exits["west"] = hall_way_4
 hall_way_4.exits["east"] = hall_way_3
 hall_way_4.exits["south"] = storage_room_2
 storage_room_2.exits["north"] = hall_way_4
-torage_room_2.exits["west"] = hall_way_7
+storage_room_2.exits["west"] = hall_way_7
 hall_way_4.exits["north"] = riggs_room
 riggs_room.exits["south"] = hall_way_4
 riggs_room.exits["north"] = sur_room
@@ -345,7 +344,7 @@ sur_room.exits["north"] = medkit_room
 sur_room.exits["west"] = storage_room_3
 medkit_room.exits["south"] = sur_room
 medkit_room.exits["west"] = hall_way_big_1
-hall_way_big_.exits["east"] = medkit_room
+hall_way_big_1.exits["east"] = medkit_room
 bluglo_storage_room.exits["east"] = hall_way_big_1
 bluglo_storage_room.exits["south"] = hall_way_6
 hall_way_big_1.exits["west"] = bluglo_storage_room
@@ -367,10 +366,8 @@ hall_way_6.exits["north"] = bluglo_storage_room
 hall_way_6.exits["west"] = storm_shield
 storm_shield.exits["east"] = hall_way_6
 
-# Initialize player
 player = Player.new(command_center)
 
-# GUI Setup using Tk
 root = TkRoot.new { title "Homebase Adventure" }
 root.minsize(500, 400)
 
@@ -386,6 +383,8 @@ def update_output(text_widget, message)
   text_widget.insert('end', message + "\n")
   text_widget.configure(state: 'disabled')
   text_widget.see('end')
+rescue => e
+  puts "Error in update_output: #{e.message}"
 end
 
 input_field = TkEntry.new(root) {
@@ -397,25 +396,24 @@ submit_button = TkButton.new(root) {
   grid('row' => 1, 'column' => 1)
 }
 
-# Show the current room description initially
 update_output(game_output, player.current_room.describe)
 
 submit_button.command = proc {
-  input = input_field.get.downcase.split
-  command = input[0]
-  argument = input[1]
+  input = input_field.get
+  command, *argument_parts = input.split
+  argument = argument_parts.join(' ')
 
-  result = case command
+  result = case command.downcase
   when "move"
-    player.move(argument)
+    player.move(argument.downcase, game_output)
   when "take"
-    player.take(argument)
+    player.take(argument, game_output)
   when "inventory"
     player.inventory
   when "talk"
-    player.talk_to(argument.capitalize)
+    player.talk_to(argument.capitalize, game_output)
   when "quest"
-    player.complete_quest(argument)
+    player.complete_quest(argument, game_output)
   when "quit"
     Tk.exit
   else
@@ -425,5 +423,6 @@ submit_button.command = proc {
   update_output(game_output, result)
   input_field.delete(0, 'end')
 }
+
 
 Tk.mainloop
