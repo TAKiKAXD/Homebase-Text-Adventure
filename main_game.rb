@@ -188,7 +188,7 @@ class Player
   end
 end
 
-# Room definitions
+# Rooms
 command_center = Room.new("Command Center", "This is where you manage your missions.")
 hall_way_1 = Room.new("Hallway", "It's a hallway.")
 hall_way_2 = Room.new("Hallway", "It's a hallway.")
@@ -218,89 +218,62 @@ weaponstorage_room = Room.new("Weapon Storage Room", "A secure location for stor
 hrle_room = Room.new("The Homebase Realistic Living Environment", "A simulated environment designed to mimic real-world living conditions.")
 bluglo_storage_room = Room.new("Bluglo Storage Room", "A specialized room for storing all things Bluglo.")
 resource_storage_room = Room.new("Resource Storage Room", "A room designated for storing various resource crates and storage bins.")
+caf_room = Room.new("Cafeteria", "The Homebase cafeteria run by a SEE-Bot.")
 
 # Room items
-command_center.items << "Mission Briefing"
-command_center.items << "Communication Device"
-hall_way_1.items << "Map of Homebase"
-hall_way_2.items << "Lost Hat"
-hall_way_3.items << "Sticky note"
-hall_way_4.items << "Emergency Exit Sign"
-hall_way_5.items << "Mysterious Package"
-hall_way_7.items << "Floor Cleaning Supplies"
-armory.items << "Sword"
-armory.items << "Shotgun"
-armory.items << "Ammo Box"
-armory.items << "Grenade"
-storm_shield.items << "Shield Battery"
-storm_shield.items << "Storm Sensor"
-lars_lab.items << "Bluglo"
-lars_lab.items << "Lab Equipment"
-lars_lab.items << "Van Parts"
-lars_lab.items << "Guitar"
-lars_lab.items << "Llama head"
-van_room.items << "Van key"
-van_room.items << "Spare Tire"
-van_room.items << "Toolbox"
-van_room.items << "Llama Tail"
-storage_room_1.items << "Llama Leg"
-storage_room_1.items << "Broken Llama Parts"
-storage_room_2.items << "SEE-Bot Head"
-storage_room_2.items << "Robot Parts"
-storage_room_2.items << "Llama Torso"
-storage_room_3.items << "Random Gadget"
-storage_room_3.items << "Old Electronics"
-storage_room_3.items << "Llama Foot"
-power_room.items << "Fuel Canister"
-kevin_room.items << "Tool Kit"
-bot_room.items << "Bot Maintenance Tools"
-bot_room.items << "Rlayful Robot Parts"
-major_room.items << "Hero Dossiers"
-major_room.items << "Tactical Map"
-sur_room.items << "Bedroll"
-sur_room.items << "Survivor Gear"
-hero_room.items << "Hero Costume"
-hero_room.items << "Training Gear"
-riggs_room.items << "Survivor Reports"
-riggs_room.items << "Emergency Supplies"
-medkit_room.items << "Medkit"
-medkit_room.items << "First Fid Supplies"
-train_room.items << "Training Dummies"
-weaponstorage_room.items << "Rifle"
-weaponstorage_room.items << "Explosive Device"
-hrle_room.items << "Living Supplies"
-bluglo_storage_room.items << "Bluglo Containers"
-bluglo_storage_room.items << "Bluglo Samples"
-resource_storage_room.items << "Resource Crates"
-resource_storage_room.items << "Storage Bins"
+command_center.items.concat(["Mission Briefing", "Communication Device"])
+hall_way_1.items.concat(["Map of Homebase", "Lost Hat", "Sticky Note", "Emergency Exit Sign", "Mysterious Package", "Floor Cleaning Supplies"])
+armory.items.concat(["Sword", "Shotgun", "Ammo Box", "Grenade"])
+storm_shield.items.concat(["Shield Battery", "Storm Sensor"])
+lars_lab.items.concat(["Bluglo", "Lab Equipment", "Van Parts", "Guitar", "Llama Leg"])
+van_room.items.concat(["Van Key", "Spare Tire", "Toolbox", "Llama Tail"])
+storage_room_1.items.concat(["Llama Head", "Broken Llama Parts"])
+storage_room_2.items.concat(["SEE-Bot Head", "Robot Parts", "Llama Torso"])
+storage_room_3.items.concat(["Random Gadget", "Old Electronics", "Llama Foot"])
+power_room.items.concat(["Fuel Canister"])
+kevin_room.items.concat(["Tool Kit"])
+bot_room.items.concat(["Bot Maintenance Tools", "Rlayful Robot Parts"])
+major_room.items.concat(["Hero Dossiers", "Tactical Map"])
+sur_room.items.concat(["Bedroll", "Survivor Gear"])
+hero_room.items.concat(["Hero Costume", "Training Gear"])
+riggs_room.items.concat(["Survivor Reports", "Emergency Supplies"])
+medkit_room.items.concat(["Medkit", "First Aid Supplies"])
+train_room.items.concat(["Training Dummies"])
+weaponstorage_room.items.concat(["Rifle", "Explosive Device"])
+hrle_room.items.concat(["Living Supplies"])
+bluglo_storage_room.items.concat(["Bluglo Containers", "Bluglo Samples"])
+resource_storage_room.items.concat(["Resource Crates", "Storage Bins"])
+caf_room.items.concat(["Food Tray"])
 
 # Room characters
 command_center.characters["Ray"] = "Ray says: 'Welcome to the Command Center! What can I help you with?'"
-storage_room_1.characters["Llama"] = "Llama says: '........'"
-armory.characters["Clip"] = "Clip says: ''"
+storage_room_1.characters["Llama"] = "Llama says: 'Rated X for X-Ray!'"
+armory.characters["Clip"] = "Clip says: 'Null'"
 lars_lab.characters["Lars"] = "Lars says: 'I’m working on the van. We’ll need this to fly into the storm!'"
-lars_lab.characters["Anthony"] = "Anthony says: ''"
-lars_lab.characters["Syd"] = "Syd says: ''"
-lars_lab.characters["Carlos"] = "Carlos says: ''"
-kevin_room.characters["Kevin"] = "Kevin says: ''"
-bot_room.characters["LoK"] = "LoK says: ''"
-bot_room.characters["Pop"] = "Pop says: ''"
-major_room.characters["Oswald"] = "Major Oswald says: ''"
-hero_room.characters["Penny"] = "Penny says: ''"
-hero_room.characters["Ken"] = "Ken says: ''"
-hero_room.characters["Jess"] = "Jess says: ''"
+lars_lab.characters["Anthony"] = "Anthony says: 'Have you seen my drumsticks anywhere?'"
+lars_lab.characters["Syd"] = "Syd says: 'Null'"
+lars_lab.characters["Carlos"] = "Carlos says: 'Null'"
+kevin_room.characters["Kevin"] = "Kevin makes a robotic noise."
+bot_room.characters["Lok"] = "Lok says: 'Nothing you can make out.'"
+bot_room.characters["Pop"] = "Pop looks at you like he's never seen you before."
+major_room.characters["Oswald"] = "Major Oswald says: 'Null'"
+hero_room.characters["Penny"] = "Penny says: 'Null'"
+hero_room.characters["Ken"] = "Ken says: 'Null'"
+hero_room.characters["Jess"] = "Jess says: 'Null'"
 storage_room_2.characters["SEE-Bot"] = "SEE-Bot says: 'QUIET PLEASE. I AM SEEING. I AM SEEING'"
 storage_room_2.characters["Pira-SEE-Bot"] = "Pira-SEE-Bot says: 'AVAST YE SCURVY LANDLUBBERS. I BE A SEEIN'.'"
-riggs_room.characters["Riggs"] = "Director Riggs says: ''"
+riggs_room.characters["Riggs"] = "Director Riggs says: 'Null'"
 sur_room.characters["Survivor1"] = "Survivor says: 'You’re a lifesaver, Commander. We’d be toast without you!'"
 sur_room.characters["Survivor2"] = "Survivor says: 'One day, we’ll take back our world from this storm. I just know it!'"
 sur_room.characters["Survivor3"] = "Survivor says: 'Think we’ll ever see blue skies again, Commander? I miss the sun...'"
 medkit_room.characters["Ned"] = "Ned says: 'Any chance you’ve got a Medkit?'"
-hrle_room.characters["Ramirez"] = "Ramirez says: ''"
-hrle_room.characters["Eminem"] = "Eminem says: ''"
+hrle_room.characters["Ramirez"] = "Ramirez says: 'Null'"
+hrle_room.characters["Eminem"] = "Eminem says: 'My name is eminem and I like to rap'"
+bluglo_storage_room.characters["Vinderman"] = "Dr. Vinderman says: 'Null'"
+caf_room.characters["Caf-SEE-Bot"] = "Caf-SEE-Bot says: 'QUIET, PLEASE. I’M BREWIN’. I’M BREWIN'"
 
 # Room quests
-#command_center.quests["Ray"] = Quest.new("Put Bluglo in the furnace in the Power Room", ["Bluglo"], "Power Room")
+# command_center.quests["Ray"] = Quest.new("Put Bluglo in the furnace in the Power Room", ["Bluglo"], "Power Room")
 
 # Connecting rooms
 command_center.exits["south"] = hall_way_1
@@ -361,14 +334,19 @@ hall_way_5.exits["west"] = hall_way_6
 hall_way_5.exits["south"] = hall_way_7
 hall_way_7.exits["north"] = hall_way_5
 hall_way_7.exits["east"] = storage_room_2
+hall_way_7.exits["west"] = caf_room
 hall_way_6.exits["east"] = hall_way_5
 hall_way_6.exits["north"] = bluglo_storage_room
 hall_way_6.exits["west"] = storm_shield
+hall_way_6.exits["south"] = caf_room
+caf_room.exits["north"] = hall_way_6
+caf_room.exits["east"] = hall_way_7
 storm_shield.exits["east"] = hall_way_6
+
 
 player = Player.new(command_center)
 
-root = TkRoot.new { title "Homebase Adventure" }
+root = TkRoot.new { title "Homebase" }
 root.minsize(500, 400)
 
 game_output = TkText.new(root) {
