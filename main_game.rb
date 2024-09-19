@@ -162,8 +162,26 @@ lars_lab.items << "Llama body"
 
 # room characters
 command_center.characters["Ray"] = "Ray says: 'Welcome to the Command Center! What can I help you with?'"
-lars_lab.characters["Lars"] = "Lars says: 'I’m working on the van. We’ll need this to fly into the storm!'"
 storage_room_1.characters["Llama"] = "Llama says: '........'"
+armory.characters["Clip"] = "Clip says: ''"
+lars_lab.characters["Lars"] = "Lars says: 'I’m working on the van. We’ll need this to fly into the storm!'"
+lars_lab.characters["Anthony"] = "Anthony says: ''"
+lars_lab.characters["Syd"] = "Syd says: ''"
+lars_lab.characters["Carlos"] = "Carlos says: ''"
+kevin_room.characters["Kevin"] = "Kevin says: ''"
+bot_room.characters["LoK"] = "LoK says: ''"
+bot_room.characters["Pop"] = "Pop says: ''"
+major_room.characters["Oswald"] = "Major Oswald says: ''"
+hero_room.characters["Penny"] = "Penny says: ''"
+hero_room.characters["Ken"] = "Ken says: ''"
+hero_room.characters["Jess"] = "Jess says: ''"
+storage_room_2.characters["SEE-Bot"] = "SEE-Bot says: ''"
+storage_room_2.characters["Pira-SEE-Bot"] = "Pira-SEE-Bot says: ''"
+riggs_room.characters["Riggs"] = "Director Riggs says: ''"
+sur_room.characters[""] = "says: ''"
+sur_room.characters[""] = "says: ''"
+sur_room.characters[""] = "says: ''"
+medkit_room.characters["Ned"] = "Ned says: ''"
 
 # room quests
 command_center.quests["Ray"] = Quest.new("Put Bluglo in the furnace in the Power Room", ["Bluglo"], "Power Room")
