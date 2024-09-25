@@ -1,21 +1,11 @@
 # Homebase Text Adventure
 
-# VERY MUTCH STILL WORK IN PROGESS 
-
-## Overview
-Homebase Text Adventure is a text-based adventure game written in Ruby. The player navigates through various rooms, solving puzzles and exploring the environment, using commands or buttons representing available actions.
+Homebase is a text-based adventure game built on top of the [Text Engine](https://github.com/okaybenji/text-engine) created by okaybenji. This project aims to expand and enhance the original game engine by adding new features, worlds, and adventures.
 
 ## Features
-- Explore different rooms with unique descriptions.
-- Room exits now specify destination rooms instead of just directions.
-- Interactions through buttons instead of text input.
+- Interactive storytelling
+- Customizable adventures
+- Expandable world
 
-## Requirements
-- Ruby 2.7+
-- Tk gem for the graphical interface.
-
-## How to Run
-1. Clone the repository.
-2. Run `main_game.rb` using Ruby: 
-   ```bash
-   ruby main_game.rb
+## Credits
+Original game engine: [Text Engine](https://github.com/okaybenji/text-engine)
